@@ -1,0 +1,46 @@
+Clock:     ─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐
+            │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
+            └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘
+
+Pixel_in:    P0        P1        P2        P3        P4
+
+──────────────────────────────────────────────────────────────────────────────
+Stage A — Pixel enters each cluster core (thr1…thrN)
+──────────────────────────────────────────────────────────────────────────────
+
+Core thr1:   |abs|sq|sum|sqrt|thr1(P0)|abs|sq|sum|sqrt|thr1(P1)|abs|...
+Core thr2:   |abs|sq|sum|sqrt|thr2(P0)|abs|sq|sum|sqrt|thr2(P1)|abs|...
+Core thr3:   |abs|sq|sum|sqrt|thr3(P0)|abs|sq|sum|sqrt|thr3(P1)|abs|...
+Core thr4:   |abs|sq|sum|sqrt|thr4(P0)|abs|sq|sum|sqrt|thr4(P1)|abs|...
+Core thr5:   |abs|sq|sum|sqrt|thr5(P0)|abs|sq|sum|sqrt|thr5(P1)|abs|...
+
+(these stages match your rgb_cluster_core + square_root pipeline)
+
+──────────────────────────────────────────────────────────────────────────────
+Stage B — Thresholds for pixel Pn become valid simultaneously
+──────────────────────────────────────────────────────────────────────────────
+
+thr1(P0)   thr1(P1)   thr1(P2)   thr1(P3)   thr1(P4)
+thr2(P0)   thr2(P1)   thr2(P2)   thr2(P3)   thr2(P4)
+thr3(P0)   thr3(P1)   thr3(P2)   thr3(P3)   thr3(P4)
+thr4(P0)   thr4(P1)   thr4(P2)   thr4(P3)   thr4(P4)
+thr5(P0)   thr5(P1)   thr5(P2)   thr5(P3)   thr5(P4)
+
+──────────────────────────────────────────────────────────────────────────────
+Stage C — Comparator selects winner_index for each pixel
+──────────────────────────────────────────────────────────────────────────────
+
+winner(P0)   winner(P1)   winner(P2)   winner(P3)   winner(P4)
+ = argmin(thr1..thr5)
+
+──────────────────────────────────────────────────────────────────────────────
+Stage D — RGB MUX selects centroid color for the winning cluster
+──────────────────────────────────────────────────────────────────────────────
+
+k_rgb[w0]    k_rgb[w1]    k_rgb[w2]    k_rgb[w3]    k_rgb[w4]
+
+──────────────────────────────────────────────────────────────────────────────
+Stage E — Final output pixel (clustered RGB)
+──────────────────────────────────────────────────────────────────────────────
+
+pixel_out:   RGB(P0)      RGB(P1)      RGB(P2)      RGB(P3)      RGB(P4)
