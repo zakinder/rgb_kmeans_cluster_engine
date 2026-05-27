@@ -53,6 +53,8 @@ pixel_out_rgb = C(argmin D(i))
 - Metadata alignment for valid/frame/line/coordinate fields
 - Pipeline-oriented timing model
 - Verification-ready design documentation
+- External-controller runtime intelligence-layer management
+- Diagnostic readback and configuration-integrity verification
 
 ---
 
@@ -69,6 +71,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIXEL_STREAM_METADATA.md](docs/PIXEL_STREAM_METADATA.md) | Stream metadata, valid signal, frame markers, and coordinate alignment. |
 | [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
 | [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
+| [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
 
 ---
 
@@ -130,9 +133,10 @@ Clustered RGB Output Stream
 - FPGA video preprocessing
 - Palette-based visual simplification
 - Adaptive centroid-profile experiments
+- Runtime centroid-profile control from firmware/software
 
 ---
 
 ## Design Notes
 
-The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, and formal verification assertions.
+The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, and formal verification assertions.
