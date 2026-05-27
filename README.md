@@ -59,6 +59,8 @@ pixel_out_rgb = C(argmin D(i))
 - High-performance FPGA intelligence-layer integration manual
 - Live Learning and Archived Wisdom memory-library management
 - Reverse-index consistency across internal shadow banks
+- Channel hierarchy normalization using Max/Mid/Min intensity roles
+- Memory compression through generic color-role representation
 - Sony IMX477 Capture, Process, and Output pipeline narrative
 - Invention value-proposition and commercial applicability analysis
 - Learner-friendly pixel journey explanation
@@ -80,6 +82,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
 | [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
 | [docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md](docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md) | Technical narrative describing Sony IMX477 image data flow through Capture, Process, and Output pipelines into filtered and clustered video streams. |
+| [docs/MEMORY_COMPRESSION_CHANNEL_HIERARCHY_NORMALIZATION.md](docs/MEMORY_COMPRESSION_CHANNEL_HIERARCHY_NORMALIZATION.md) | Clear explanation of Max/Mid/Min channel hierarchy normalization and how generic intensity roles reduce physical RGB memory duplication. |
 | [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
 | [docs/PIXEL_35_CYCLE_JOURNEY.md](docs/PIXEL_35_CYCLE_JOURNEY.md) | Encouraging student narrative following a pixel through a 35-cycle journey from RGB input, neutral space interception, distance measurement, comparator tree, cluster ID, and final output mapper. |
 | [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
@@ -150,9 +153,10 @@ Clustered RGB Output Stream
 - Industrial inspection recipe switching
 - Robotics vision profile adaptation
 - Sony IMX477 sensor-to-clustered-video processing
+- Compressed profile storage using Max/Mid/Min channel hierarchy
 
 ---
 
 ## Design Notes
 
-The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, reverse-indexed shadow banks, and formal verification assertions.
+The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, reverse-indexed shadow banks, channel hierarchy normalization, and formal verification assertions.
