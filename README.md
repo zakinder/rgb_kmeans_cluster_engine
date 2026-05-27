@@ -56,6 +56,9 @@ pixel_out_rgb = C(argmin D(i))
 - External-controller runtime intelligence-layer management
 - Diagnostic readback and configuration-integrity verification
 - Shadow-buffered runtime profile activation
+- High-performance FPGA intelligence-layer integration manual
+- Live Learning and Archived Wisdom memory-library management
+- Reverse-index consistency across internal shadow banks
 - Invention value-proposition and commercial applicability analysis
 - Learner-friendly pixel journey explanation
 - 35-cycle student-facing RGB-to-cluster-ID journey narrative
@@ -78,6 +81,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
 | [docs/PIXEL_35_CYCLE_JOURNEY.md](docs/PIXEL_35_CYCLE_JOURNEY.md) | Encouraging student narrative following a pixel through a 35-cycle journey from RGB input, neutral space interception, distance measurement, comparator tree, cluster ID, and final output mapper. |
 | [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
+| [docs/FPGA_INTELLIGENCE_LAYER_INTEGRATION_MANUAL.md](docs/FPGA_INTELLIGENCE_LAYER_INTEGRATION_MANUAL.md) | Detailed engineering manual for five-step safe updates, hardware commitment protocol, visual-tearing prevention, Live Learning and Archived Wisdom libraries, and reverse-indexed shadow-bank consistency. |
 | [docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md](docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md) | Substantive analysis of technical claims, novelty, mid-frame artifact prevention, and commercial applicability across industrial inspection, robotics vision, and other sectors. |
 
 ---
@@ -148,4 +152,4 @@ Clustered RGB Output Stream
 
 ## Design Notes
 
-The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, and formal verification assertions.
+The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, reverse-indexed shadow banks, and formal verification assertions.
