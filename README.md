@@ -57,6 +57,7 @@ pixel_out_rgb = C(argmin D(i))
 - Diagnostic readback and configuration-integrity verification
 - Shadow-buffered runtime profile activation
 - Invention value-proposition and commercial applicability analysis
+- Learner-friendly pixel journey explanation
 
 ---
 
@@ -73,6 +74,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIXEL_STREAM_METADATA.md](docs/PIXEL_STREAM_METADATA.md) | Stream metadata, valid signal, frame markers, and coordinate alignment. |
 | [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
 | [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
+| [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
 | [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
 | [docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md](docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md) | Substantive analysis of technical claims, novelty, mid-frame artifact prevention, and commercial applicability across industrial inspection, robotics vision, and other sectors. |
 
