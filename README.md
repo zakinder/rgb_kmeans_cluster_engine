@@ -59,6 +59,7 @@ pixel_out_rgb = C(argmin D(i))
 - High-performance FPGA intelligence-layer integration manual
 - Live Learning and Archived Wisdom memory-library management
 - Reverse-index consistency across internal shadow banks
+- Sony IMX477 Capture, Process, and Output pipeline narrative
 - Invention value-proposition and commercial applicability analysis
 - Learner-friendly pixel journey explanation
 - 35-cycle student-facing RGB-to-cluster-ID journey narrative
@@ -78,6 +79,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIXEL_STREAM_METADATA.md](docs/PIXEL_STREAM_METADATA.md) | Stream metadata, valid signal, frame markers, and coordinate alignment. |
 | [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
 | [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
+| [docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md](docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md) | Technical narrative describing Sony IMX477 image data flow through Capture, Process, and Output pipelines into filtered and clustered video streams. |
 | [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
 | [docs/PIXEL_35_CYCLE_JOURNEY.md](docs/PIXEL_35_CYCLE_JOURNEY.md) | Encouraging student narrative following a pixel through a 35-cycle journey from RGB input, neutral space interception, distance measurement, comparator tree, cluster ID, and final output mapper. |
 | [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
@@ -147,6 +149,7 @@ Clustered RGB Output Stream
 - Runtime centroid-profile control from firmware/software
 - Industrial inspection recipe switching
 - Robotics vision profile adaptation
+- Sony IMX477 sensor-to-clustered-video processing
 
 ---
 
