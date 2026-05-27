@@ -58,6 +58,7 @@ pixel_out_rgb = C(argmin D(i))
 - Shadow-buffered runtime profile activation
 - Invention value-proposition and commercial applicability analysis
 - Learner-friendly pixel journey explanation
+- 35-cycle student-facing RGB-to-cluster-ID journey narrative
 
 ---
 
@@ -75,6 +76,7 @@ pixel_out_rgb = C(argmin D(i))
 | [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
 | [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
 | [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
+| [docs/PIXEL_35_CYCLE_JOURNEY.md](docs/PIXEL_35_CYCLE_JOURNEY.md) | Encouraging student narrative following a pixel through a 35-cycle journey from RGB input, neutral space interception, distance measurement, comparator tree, cluster ID, and final output mapper. |
 | [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
 | [docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md](docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md) | Substantive analysis of technical claims, novelty, mid-frame artifact prevention, and commercial applicability across industrial inspection, robotics vision, and other sectors. |
 
