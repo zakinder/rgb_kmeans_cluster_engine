@@ -1,162 +1,141 @@
-# RGB K-Means Cluster Engine
+# Runtime-Adaptive FPGA Video LUT Reconfiguration
 
 **Designer Name:** Sakinder Ali  
-**Repository:** `zakinder/rgb_kmeans_cluster_engine`  
-**Domain:** FPGA / VHDL / Real-Time RGB Image Processing
+**Repository:** `zakinder/Runtime-Adaptive-FPGA-Video-LUT-Reconfiguration`  
+**Domain:** FPGA / Real-Time Video Processing / Runtime LUT Reconfiguration
 
 ---
 
 ## Overview
 
-`rgb_kmeans_cluster_engine` is a VHDL-oriented FPGA design for real-time RGB pixel clustering. The engine receives a streaming RGB pixel, compares it against stored RGB centroid values, selects the nearest centroid, and outputs the corresponding clustered RGB color.
+This repository documents a runtime-adaptive FPGA video lookup table reconfiguration architecture for real-time RGB video stream processing. The system is designed to update, select, activate, and verify LUT-based video color behavior while the live video stream continues operating.
 
-The design supports color quantization, image segmentation, color-region classification, and hardware-accelerated palette-style processing in deterministic video pipelines.
-
----
-
-## Core Function
-
-For each valid input pixel:
-
-```text
-P = (R, G, B)
-```
-
-The engine compares the pixel against centroid entries:
-
-```text
-C(i) = (Ri, Gi, Bi)
-```
-
-Using the hardware-efficient distance model:
-
-```text
-D(i) = |R - Ri| + |G - Gi| + |B - Bi|
-```
-
-The selected output is the nearest centroid:
-
-```text
-pixel_out_rgb = C(argmin D(i))
-```
+The architecture uses a control path for host configuration, a shadow LUT buffer for safe update staging, an active LUT bank for live video operation, command-indexed profile selection, RGB mapping logic, and diagnostic readback for verification.
 
 ---
 
-## Main Features
+## Core Technical Problem
 
-- Real-time RGB stream processing
-- FPGA-friendly centroid-based clustering
-- Programmable/readable centroid LUT interface
-- Manhattan-distance RGB comparison
-- Minimum-distance centroid selection
-- Clustered RGB output generation
-- Metadata alignment for valid/frame/line/coordinate fields
-- Pipeline-oriented timing model
-- Verification-ready design documentation
-- External-controller runtime intelligence-layer management
-- Diagnostic readback and configuration-integrity verification
-- Shadow-buffered runtime profile activation
-- High-performance FPGA intelligence-layer integration manual
-- Live Learning and Archived Wisdom memory-library management
-- Reverse-index consistency across internal shadow banks
-- Channel hierarchy normalization using Max/Mid/Min intensity roles
-- Memory compression through generic color-role representation
-- Sony IMX477 Capture, Process, and Output pipeline narrative
-- Invention value-proposition and commercial applicability analysis
-- Learner-friendly pixel journey explanation
-- 35-cycle student-facing RGB-to-cluster-ID journey narrative
+Conventional FPGA video-processing pipelines often use fixed LUT behavior or require disruptive reconfiguration when color profiles must change. Directly writing active LUT values during live operation can create partial updates, flicker, color jumps, tearing, or unstable output.
+
+This project addresses the need for a safer runtime reconfiguration model that separates LUT preparation from LUT activation.
 
 ---
 
-## Repository Documentation
+## Key Features
 
-| Document | Description |
+- Real-time RGB video stream processing
+- Runtime LUT reconfiguration
+- Shadow-buffered LUT update staging
+- Active LUT bank separation
+- Command-indexed palette/profile selection
+- Compressed max/mid/min color-boundary storage concept
+- Dynamic RGB mapping support
+- AXI4-Lite style register-control model
+- Diagnostic readback verification
+- FPGA validation and publication-ready documentation structure
+
+---
+
+## High-Level Data Flow
+
+```text
+Host Software
+    |
+    v
+AXI4-Lite Register Interface
+    |
+    v
+Command Index Decoder
+    |
+    v
+Shadow LUT Buffer
+    |
+    v
+Activation Control
+    |
+    v
+Active LUT Bank
+    |
+    v
+RGB Mapping Logic
+    |
+    v
+Live Video Output
+```
+
+---
+
+## Repository Structure
+
+```text
+docs/
+  technical-overview.md
+  invention-summary.md
+  publication-roadmap.md
+  system-architecture.md
+  register-map.md
+  lut-reconfiguration-flow.md
+  diagnostic-readback.md
+  implementation-plan.md
+  validation-plan.md
+
+papers/
+  technical-white-paper.md
+  patent-style-disclosure.md
+
+images/
+  README.md
+
+rtl/
+  README.md
+
+src/
+  README.md
+
+testbench/
+  README.md
+```
+
+---
+
+## Documentation Index
+
+| Document | Purpose |
 |---|---|
-| [DESIGN.md](DESIGN.md) | Main design document covering purpose, interface, architecture, timing, verification, limitations, and enhancements. |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Hardware architecture and block-level structure. |
-| [docs/CLUSTERING_ALGORITHM.md](docs/CLUSTERING_ALGORITHM.md) | RGB centroid clustering algorithm and mathematical model. |
-| [docs/CENTROID_LUT.md](docs/CENTROID_LUT.md) | Centroid storage, programming, readback, and profile-selection design. |
-| [docs/DISTANCE_COMPUTATION_UNIT.md](docs/DISTANCE_COMPUTATION_UNIT.md) | RGB distance calculation logic and hardware mapping. |
-| [docs/MINIMUM_DISTANCE_SELECTOR.md](docs/MINIMUM_DISTANCE_SELECTOR.md) | Comparator-tree and nearest-centroid selection logic. |
-| [docs/PIXEL_STREAM_METADATA.md](docs/PIXEL_STREAM_METADATA.md) | Stream metadata, valid signal, frame markers, and coordinate alignment. |
-| [docs/PIPELINE_TIMING.md](docs/PIPELINE_TIMING.md) | Pipeline latency, throughput, fill/drain behavior, and timing closure notes. |
-| [docs/VERIFICATION_PLAN.md](docs/VERIFICATION_PLAN.md) | Test strategy, reference model, assertions, and coverage goals. |
-| [docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md](docs/IMX477_CAPTURE_PROCESS_OUTPUT_PIPELINE.md) | Technical narrative describing Sony IMX477 image data flow through Capture, Process, and Output pipelines into filtered and clustered video streams. |
-| [docs/MEMORY_COMPRESSION_CHANNEL_HIERARCHY_NORMALIZATION.md](docs/MEMORY_COMPRESSION_CHANNEL_HIERARCHY_NORMALIZATION.md) | Clear explanation of Max/Mid/Min channel hierarchy normalization and how generic intensity roles reduce physical RGB memory duplication. |
-| [docs/PIXEL_JOURNEY_NARRATIVE.md](docs/PIXEL_JOURNEY_NARRATIVE.md) | Learner-friendly story following one pixel through five stages from input RGB to assigned clustered color. |
-| [docs/PIXEL_35_CYCLE_JOURNEY.md](docs/PIXEL_35_CYCLE_JOURNEY.md) | Encouraging student narrative following a pixel through a 35-cycle journey from RGB input, neutral space interception, distance measurement, comparator tree, cluster ID, and final output mapper. |
-| [docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md](docs/EXTERNAL_CONTROLLER_INTELLIGENCE_LAYER_GUIDE.md) | Professional software/firmware guide for safe runtime updates, representative control registers, and diagnostic readback verification. |
-| [docs/FPGA_INTELLIGENCE_LAYER_INTEGRATION_MANUAL.md](docs/FPGA_INTELLIGENCE_LAYER_INTEGRATION_MANUAL.md) | Detailed engineering manual for five-step safe updates, hardware commitment protocol, visual-tearing prevention, Live Learning and Archived Wisdom libraries, and reverse-indexed shadow-bank consistency. |
-| [docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md](docs/INVENTION_VALUE_PROPOSITION_ANALYSIS.md) | Substantive analysis of technical claims, novelty, mid-frame artifact prevention, and commercial applicability across industrial inspection, robotics vision, and other sectors. |
+| [Technical Overview](docs/technical-overview.md) | Introduces the architecture, problem, solution, and applications. |
+| [Invention Summary](docs/invention-summary.md) | Summarizes invention-oriented features and technical benefits. |
+| [Publication Roadmap](docs/publication-roadmap.md) | Defines the path toward GitHub, white paper, DOI, and release publication. |
+| [System Architecture](docs/system-architecture.md) | Describes the high-level hardware/control architecture. |
+| [Register Map](docs/register-map.md) | Defines representative control and status registers. |
+| [LUT Reconfiguration Flow](docs/lut-reconfiguration-flow.md) | Explains how LUT data is staged, activated, and verified. |
+| [Diagnostic Readback](docs/diagnostic-readback.md) | Describes runtime verification of active LUT state. |
+| [Implementation Plan](docs/implementation-plan.md) | Outlines future RTL, software, testbench, and validation work. |
+| [Validation Plan](docs/validation-plan.md) | Defines verification targets and expected test scenarios. |
+| [Technical White Paper](papers/technical-white-paper.md) | Publication-style technical paper draft. |
+| [Patent-Style Disclosure](papers/patent-style-disclosure.md) | Invention organization and claim-style technical disclosure draft. |
 
 ---
 
-## Top-Level Interface
+## Intended Applications
 
-```vhdl
-entity rgb_kmeans_cluster_engine is
-    generic (
-        i_data_width : integer := 8
-    );
-    port (
-        clk                 : in  std_logic;
-        rst_n               : in  std_logic;
-        pixel_in_rgb        : in  channel;
-        centroid_lut_select : in  natural;
-        centroid_lut_in     : in  std_logic_vector(23 downto 0);
-        centroid_lut_out    : out std_logic_vector(31 downto 0);
-        k_ind_w             : in  natural;
-        k_ind_r             : in  natural;
-        pixel_out_rgb       : out channel
-    );
-end rgb_kmeans_cluster_engine;
-```
+- FPGA video-processing pipelines
+- Real-time color correction
+- Embedded camera systems
+- Adaptive display calibration
+- Hardware-accelerated image processing
+- Dynamic palette transformation
+- Video-processing validation platforms
+- Xilinx / AMD FPGA and Kria-style prototyping environments
 
 ---
 
-## Functional Blocks
+## Project Status
 
-```text
-Input RGB Stream
-      |
-      v
-Input Capture / Metadata Register
-      |
-      v
-Centroid LUT / Profile Bank
-      |
-      v
-RGB Distance Computation
-      |
-      v
-Minimum-Distance Selector
-      |
-      v
-Centroid Output MUX
-      |
-      v
-Clustered RGB Output Stream
-```
+Initial public documentation and publication-preparation repository. Future updates may include RTL modules, host-control software, simulation testbenches, block diagrams, hardware validation evidence, and release artifacts.
 
 ---
 
-## Use Cases
+## Notice
 
-- RGB color quantization
-- Real-time image segmentation
-- Color-region classification
-- Object/region pre-filtering
-- FPGA video preprocessing
-- Palette-based visual simplification
-- Adaptive centroid-profile experiments
-- Runtime centroid-profile control from firmware/software
-- Industrial inspection recipe switching
-- Robotics vision profile adaptation
-- Sony IMX477 sensor-to-clustered-video processing
-- Compressed profile storage using Max/Mid/Min channel hierarchy
-
----
-
-## Design Notes
-
-The design favors deterministic FPGA implementation. Manhattan distance is used as the primary distance metric because it maps efficiently to subtractors, absolute-value logic, adders, and comparator trees. The architecture can be extended with deeper pipelining, parameterized centroid count, shadow centroid LUTs, AXI-style interfaces, diagnostic readback, reverse-indexed shadow banks, channel hierarchy normalization, and formal verification assertions.
+This repository contains technical documentation and publication drafts. Patent strategy should be reviewed before publishing implementation details that may be considered invention-critical.
