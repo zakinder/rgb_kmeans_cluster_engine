@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this project or documentation, please cite it using the metadata below."
+title: "Runtime-Adaptive FPGA Video LUT Reconfiguration"
+authors:
+  - family-names: "Ali"
+    given-names: "Sakinder"
+repository-code: "https://github.com/zakinder/Runtime-Adaptive-FPGA-Video-LUT-Reconfiguration"
+url: "https://github.com/zakinder/Runtime-Adaptive-FPGA-Video-LUT-Reconfiguration"
+abstract: "A runtime-adaptive FPGA video lookup table reconfiguration architecture for real-time RGB stream processing using shadow-buffered LUT updates, command-indexed profile selection, active LUT bank separation, and diagnostic readback verification."
+keywords:
+  - FPGA
+  - video processing
+  - LUT reconfiguration
+  - real-time RGB
+  - runtime reconfiguration
+  - diagnostic readback
+  - shadow buffer
+license: "Apache-2.0"
+version: "0.1.0"
+date-released: "2026-05-29"
